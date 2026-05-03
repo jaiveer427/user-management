@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f7fa;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+  padding: 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.flex {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+input,
+select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+}
+
+button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-secondary {
+  background: #64748b;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+td button {
+  margin-left: 8px;
+}
+
+th {
+  background: #f8fafc;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+
+/* Dark theme sitting start */
+.dark {
+  background: #0f172a;
+  color: white;
+
+  /* Nested Card styles */
+  .card {
+    background: #1e293b;
+  }
+
+  /* Nested Table styles with the red header and stripes we discussed */
+  table {
+    color: white;
+    border-collapse: collapse;
+    border: 1px solid #334155;
+    /* Using your input border color for consistency */
+
+    thead {
+      color: black;
+    }
+
+    th,
+    td {
+      border: 1px solid #334155;
+      padding: 10px;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  /* Nested Form elements */
+  input,
+  select {
+    background: #334155;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    /* Added for a smoother look */
+  }
+}
+
+/* Dark theme sitting end */
+/* shimmer effect*/
+/* 1. The Base Utility Class */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: #e2e8f0; /* Default Light Mode */
+  /* This allows it to work on any shape */
+  color: transparent !important; 
+  border-color: transparent !important;
+  user-select: none;
+  cursor: default;
+}
+
+/* 2. Dark Theme Support */
+.dark .skeleton {
+  background-color: #1e293b; /* Matches your card background */
+}
+
+/* 3. The Universal Shimmer Effect */
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.03) 20%,
+    rgba(255, 255, 255, 0.08) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* Adjust shimmer for light mode */
+:not(.dark) .skeleton::after {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.4) 20%,
+    rgba(255, 255, 255, 0.7) 60%,
+    rgba(255, 255, 255, 0)
+  );
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
